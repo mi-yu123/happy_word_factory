@@ -1,0 +1,77 @@
+<div class="container mx-auto my-5 px-4">
+  <h1 class="text-3xl font-bold text-center mb-6">幸せの管理</h1>
+
+  <!-- Happy Words Section -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-4">Happy Words 一覧</h2>
+    <%= link_to 'Happy Word を追加', new_admin_happy_path, class: 'bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 mb-3 inline-block' %>
+
+    <% if @happies.any? %>
+      <table class="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th class="px-4 py-2 text-left">ID</th>
+            <th class="px-4 py-2 text-left">テキスト</th>
+            <th class="px-4 py-2 text-left">作成日</th>
+            <th class="px-4 py-2 text-left">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @happies.each do |happy| %>
+            <tr id="<%= dom_id(happy) %>" class="border-b hover:bg-gray-100">
+              <td class="px-4 py-2"><%= happy.id %></td>
+              <td class="px-4 py-2"><%= happy.text %></td>
+              <td class="px-4 py-2"><%= happy.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+              <td class="px-4 py-2">
+                <%= link_to '編集', edit_admin_happy_path(happy), class: 'bg-gray-500 text-white py-1 px-2 rounded-md text-sm hover:bg-gray-600' %>
+                <%= link_to '削除', admin_happy_path(happy),
+                            method: :delete,
+                            data: { confirm: '本当に削除しますか？' },
+                            class: 'bg-red-600 text-white py-1 px-2 rounded-md text-sm hover:bg-red-700' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-gray-500">現在、Happy Words は登録されていません。</p>
+    <% end %>
+  </div>
+
+  <!-- Unhappy Words Section -->
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Unhappy Words 一覧</h2>
+    <%= link_to 'Unhappy Word を追加', new_admin_unhappy_path, class: 'bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 mb-3 inline-block' %>
+
+    <% if @unhappies.any? %>
+      <table class="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th class="px-4 py-2 text-left">ID</th>
+            <th class="px-4 py-2 text-left">テキスト</th>
+            <th class="px-4 py-2 text-left">作成日</th>
+            <th class="px-4 py-2 text-left">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @unhappies.each do |unhappy| %>
+            <tr id="<%= dom_id(unhappy) %>" class="border-b hover:bg-gray-100">
+              <td class="px-4 py-2"><%= unhappy.id %></td>
+              <td class="px-4 py-2"><%= unhappy.text %></td>
+              <td class="px-4 py-2"><%= unhappy.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+              <td class="px-4 py-2">
+                <%= link_to '編集', edit_admin_unhappy_path(unhappy), class: 'bg-gray-500 text-white py-1 px-2 rounded-md text-sm hover:bg-gray-600' %>
+                <%= link_to '削除', admin_unhappy_path(unhappy),
+                            method: :delete,
+                            data: { confirm: '本当に削除しますか？' },
+                            class: 'bg-red-600 text-white py-1 px-2 rounded-md text-sm hover:bg-red-700' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-gray-500">現在、Unhappy Words は登録されていません。</p>
+    <% end %>
+  </div>
+</div>

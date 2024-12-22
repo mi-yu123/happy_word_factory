@@ -1,0 +1,37 @@
+<!-- app/views/static_pages/unhappy.html.erb -->
+<% content_for(:title, 'UNHAPPY WORD FACTORY') %>
+<div class="unhappy-content h-screen bg-unhappy flex flex-col items-center justify-center p-6 overflow-hidden relative">
+  <div class="drip"></div>
+  <div class="noise"></div>
+  <div class="unhappy-wrapper backdrop-blur-sm bg-black/20 rounded-3xl p-8 border-2 border-opacity-20 border-[#992a31] shadow-dark">
+    <h1 class="title-text text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#992a31]">
+      UNHAPPY WORD FACTORY
+    </h1>
+    <!-- ランダムに不幸な言葉を表示するボックス -->
+    <div id="unhappy-word-box" class="unhappy-display p-8 rounded-2xl text-center">
+      <% if @unhappy_word.present? %>
+        <p class="text-xl md:text-2xl font-semibold text-gray-200 gorgeous-font glitch-text">
+          <%= @unhappy_word %>
+        </p>
+      <% else %>
+        <p class="text-xl md:text-2xl font-semibold text-gray-200 gorgeous-font glitch-text">
+          さぁ幸せになろう
+        </p>
+      <% end %>
+    </div>
+    <!-- つらいよ…ボタン -->
+    <div class="text-center mt-8">
+      <%= button_to 'つらいよ…', 
+          static_pages_random_unhappy_word_path, 
+          method: :post, 
+          remote: true,
+          class: 'unhappy-btn gorgeous-font' %>
+    </div>
+  </div>
+  <!-- 幸せを取り戻すんだリンク -->
+  <div class="hope-button-wrapper">
+    <%= link_to '幸せを取り戻すんだ', 
+        root_path, 
+        class: 'hope-btn gorgeous-font' %>
+  </div>
+</div>
