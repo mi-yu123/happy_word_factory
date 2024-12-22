@@ -29,8 +29,10 @@ class Admin::UnhappiesController < ApplicationController
   end
 
   def destroy
-    @unhappy.destroy
-    redirect_to admin_dashboard_path, notice: 'Unhappy Word が削除されました'
+    @unhappy = Unhappy.find(params[:id])
+    if @unhappy.destroy
+      redirect_to admin_dashboard_path, notice: 'Unhappy Word が削除されました'
+    end
   end
 
   private

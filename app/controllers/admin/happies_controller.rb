@@ -29,8 +29,10 @@ class Admin::HappiesController < ApplicationController
   end
 
   def destroy
-    @happy.destroy
-    redirect_to admin_dashboard_path, notice: 'Happy Word が削除されました'
+    @happy = Happy.find(params[:id])
+    if @happy.destroy
+      redirect_to admin_dashboard_path, notice: 'Happy Word が削除されました'
+    end
   end
 
   private
