@@ -1,4 +1,5 @@
 class Admin::UnhappiesController < ApplicationController
+  before_action :require_admin
   before_action :set_unhappy, only: [:edit, :update, :destroy]
 
   def index
@@ -43,5 +44,11 @@ class Admin::UnhappiesController < ApplicationController
 
   def unhappy_params
     params.require(:unhappy).permit(:text)
+  end
+
+  def require_admin
+    unless admin_logged_in?
+      redirect_to request.referrer || admin_login_path, alert: '管理者権限が必要です'
+    end
   end
 end

@@ -1,4 +1,5 @@
 class Admin::HappiesController < ApplicationController
+  before_action :require_admin
   before_action :set_happy, only: [:edit, :update, :destroy]
 
   def index
@@ -43,5 +44,11 @@ class Admin::HappiesController < ApplicationController
 
   def happy_params
     params.require(:happy).permit(:text)
+  end
+
+  def require_admin
+    unless admin_logged_in?
+      redirect_to request.referrer || admin_login_path, alert: '管理者権限が必要です'
+    end
   end
 end

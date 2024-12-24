@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   helper_method :admin_logged_in?
 
   def admin_logged_in?
@@ -7,6 +6,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    redirect_to root_path, alert: '管理者権限が必要です' unless admin_logged_in?
+    unless admin_logged_in?
+      redirect_to root_path, alert: '管理者権限が必要です'
+    end
+  end
+
+  def login_admin(admin)
+    session[:admin_id] = admin_id
+  end
+
+  def logout_admin
+    session.delete[:admin_id]
   end
 end

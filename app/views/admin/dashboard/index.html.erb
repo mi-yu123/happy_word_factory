@@ -1,6 +1,13 @@
 <div class="container mx-auto my-5 px-4">
   <h1 class="text-3xl font-bold text-center mb-6">幸せの管理</h1>
 
+  <!-- ログアウトボタン -->
+  <div class="text-right mb-4">
+    <%= form_with url: admin_logout_path, method: :delete, local: true do %>
+      <%= submit_tag 'ログアウト', class: 'bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700' %>
+    <% end %>
+  </div>
+
   <!-- Happy Words Section -->
   <div class="mb-8">
     <h2 class="text-2xl font-semibold mb-4">Happy Words 一覧</h2>

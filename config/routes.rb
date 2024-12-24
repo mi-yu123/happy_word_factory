@@ -18,7 +18,7 @@ namespace :admin do
 
   get 'login' => 'admins#new', :as => :login
   post 'login' => "admins#create"
-  delete 'logout' => 'admins#destroy', :as => :logout
+  delete 'logout' => 'admins#destroy', as: :logout
 
   resources :happies, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :unhappies, only: [:index, :new, :create, :edit, :update, :destroy]
