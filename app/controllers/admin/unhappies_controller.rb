@@ -32,7 +32,7 @@ class Admin::UnhappiesController < ApplicationController
   def destroy
     @unhappy = Unhappy.find(params[:id])
     if @unhappy.destroy
-      redirect_to admin_dashboard_path, notice: 'Unhappy Word が削除されました'
+      redirect_to admin_dashboard_path, notice: "Unhappy Word が削除されました"
     end
   end
 
@@ -48,7 +48,7 @@ class Admin::UnhappiesController < ApplicationController
 
   def require_admin
     unless admin_logged_in?
-      redirect_to request.referrer || admin_login_path, alert: '管理者権限が必要です'
+      redirect_to request.referrer || admin_login_path, alert: "管理者権限が必要です"
     end
   end
 end

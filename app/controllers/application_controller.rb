@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     unless admin_logged_in?
-      redirect_to root_path, alert: '管理者権限が必要です'
+      redirect_to root_path, alert: "管理者権限が必要です"
     end
   end
 
