@@ -1,0 +1,37 @@
+<!-- app/views/static_pages/show.html.erb -->
+<div class="dreamcore-content min-h-screen bg-dreamcore flex flex-col items-center justify-center p-6">
+  <div class="content-wrapper backdrop-blur-sm bg-white/30 rounded-3xl p-8 border-2 border-opacity-20 border-[#f1b1e8] shadow-magical">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-center mb-12 gorgeous-font animate-rainbow">
+      HAPPY WORD FOR YOU
+    </h1>
+
+    <!-- ランダムに言葉を表示するボックス -->
+    <div id="word-box" class="word-display p-8 rounded-2xl text-center">
+      <% if @random_word.present? %>
+        <p class="text-xl md:text-2xl font-semibold text-[#cb9eed] gorgeous-font">
+          <%= @random_word %>
+        </p>
+      <% else %>
+        <p class="text-xl md:text-2xl font-semibold text-[#cb9eed] gorgeous-font">
+          幸せは時として人を狂わせる。
+        </p>
+      <% end %>
+    </div>
+
+    <!-- 幸せになるボタン -->
+    <div class="text-center mt-8">
+      <%= button_to 'CREATE HAPPY', 
+          static_pages_random_word_path, 
+          method: :post, 
+          remote: true,
+          class: 'happy-btn gorgeous-font' %>
+    </div>
+  </div>
+
+  <!-- 疲れちゃったボタン -->
+  <div class="tired-button-wrapper">
+    <%= link_to '疲れちゃった…', 
+        static_pages_unhappy_path, 
+        class: 'tired-btn gorgeous-font' %>
+  </div>
+</div>

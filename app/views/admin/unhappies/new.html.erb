@@ -1,0 +1,14 @@
+<h1 class="text-3xl font-bold mb-4">
+  Unhappy Word <%= action_name == 'new' ? '作成' : '編集' %>
+</h1>
+
+<%= form_with model: @unhappy, url: action_name == 'new' ? admin_unhappies_path : admin_unhappy_path(@unhappy), local: true do |form| %>
+  <div class="mb-4">
+    <%= form.label :text, 'テキスト', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.text_field :text, class: 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'w-full py-2 px-4 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50' %>
+  </div>
+<% end %>

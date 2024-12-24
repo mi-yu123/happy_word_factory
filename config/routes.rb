@@ -11,4 +11,23 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # 管理者用のルート
+namespace :admin do
+  root "dashboard#index"
+  get :dashboard, to: 'dashboard#index', as: :dashboard
+
+  get 'login' => 'admins#new', :as => :login
+  post 'login' => "admins#create"
+  delete 'logout' => 'admins#destroy', as: :logout
+
+  resources :happies, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :unhappies, only: [:index, :new, :create, :edit, :update, :destroy]
+end
+
+root 'static_pages#top'
+get 'static_pages/show'
+post 'static_pages/random_word', to: 'static_pages#random_word'
+get 'static_pages/unhappy', to: 'static_pages#unhappy'
+post 'static_pages/random_unhappy_word', to: 'static_pages#random_unhappy_word'
+
 end
