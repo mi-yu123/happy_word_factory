@@ -32,7 +32,7 @@ class Admin::HappiesController < ApplicationController
   def destroy
     @happy = Happy.find(params[:id])
     if @happy.destroy
-      redirect_to admin_dashboard_path, notice: 'Happy Word が削除されました'
+      redirect_to admin_dashboard_path, notice: "Happy Word が削除されました"
     end
   end
 
