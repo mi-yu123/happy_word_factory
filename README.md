@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発環境
+- Rails 8.0.1
+- Ruby 3.3.6
+- db postgres
+- Docker
+- TailwindCSS 3.4.17
 
-Things you may want to cover:
+## 機能
+- HAPPYな言葉をランダム表示するよ💖
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 時に疲れてしまうこともある。永遠の幸せなどないのだから…(ㅅ˘˘)♡*.+゜
