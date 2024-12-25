@@ -18,9 +18,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db
+  host: happy-word-factory-dark-sunset.internal
   username: postgres
-  password: password
+  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  port: 5432
 
 development:
   <<: *default
@@ -84,8 +85,10 @@ production:
   primary: &primary_production
     <<: *default
     database: myapp_production
-    username: myapp
+    username: postgres
     password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+    host: happy-word-factory-dark-sunset.internal
+    port: 5432
   cache:
     <<: *primary_production
     database: myapp_production_cache
