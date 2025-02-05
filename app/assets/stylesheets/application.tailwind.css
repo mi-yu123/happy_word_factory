@@ -198,21 +198,14 @@
   z-index: 2; /* 背景のノイズを他の要素の上に表示 */
 }
 
-/* コンテンツを中央に配置 */
+/* 不幸コンテンツの調整 */
 .unhappy-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  overflow: hidden;
-  z-index: 10; /* 他の要素よりも上に */
+  z-index: 10; 
 }
 
 /* ドリップアニメーション */
@@ -240,12 +233,8 @@
 
 /* 不幸なコンテンツのスタイル */
 .unhappy-wrapper {
-  backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(153, 42, 49, 0.5);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  padding: 2rem;
-  border-radius: 1.5rem;
+  max-width: 600px;
+  width: 90%;
   position: relative;
   z-index: 20;
 }
@@ -365,53 +354,4 @@
   position: absolute;
   bottom: 20px;
   width: 100%;
-}
-
-/* メディアクエリ: スマートフォン向け */
-@media (max-width: 768px) {
-  .unhappy-content {
-    height: auto; /* スマートフォンなどで高さを自動調整 */
-    padding: 2rem 1rem;
-  }
-
-  .unhappy-wrapper {
-    padding: 1.5rem;
-  }
-
-  .unhappy-btn {
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .hope-btn {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
-
-  .unhappy-display {
-    padding: 1.5rem;
-  }
-
-  .title-text {
-    font-size: 2rem; /* タイトルのフォントサイズを小さく */
-  }
-
-  .text-xl {
-    font-size: 1.25rem; /* スマホ用に調整 */
-  }
-}
-
-/* メディアクエリ: モバイル向け */
-@media (max-width: 480px) {
-  .title-text {
-    font-size: 1.5rem;
-  }
-
-  .unhappy-btn {
-    font-size: 0.875rem;
-  }
-
-  .hope-btn {
-    font-size: 0.875rem;
-  }
 }

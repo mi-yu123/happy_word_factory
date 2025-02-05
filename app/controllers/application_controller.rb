@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token, if: :json_request?
   helper_method :admin_logged_in?
 
   def admin_logged_in?
@@ -17,5 +19,11 @@ class ApplicationController < ActionController::Base
 
   def logout_admin
     session.delete[:admin_id]
+  end
+
+  protected
+
+  def json_request?
+    request.format.json?
   end
 end

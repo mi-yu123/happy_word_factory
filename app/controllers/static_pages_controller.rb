@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
   def random_word
     @random_word = Happy.order("RANDOM()").first&.text
     respond_to do |format|
-      format.js
+      format.turbo_stream
     end
   end
 
@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
   def random_unhappy_word
     @unhappy_word = Unhappy.order("RANDOM()").first&.text
     respond_to do |format|
-      format.js
+      format.turbo_stream
     end
   end
 end
